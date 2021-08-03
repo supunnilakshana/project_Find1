@@ -1,0 +1,47 @@
+﻿
+@model IEnumerable<Find1.Models.Ad>
+
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<table class="table table-bordered">
+    <thead>
+       
+    </thead>
+    <tbody>
+        @foreach (var ad in Model)
+        {
+        <tr>
+            
+            <td style="width: 300px;">
+                <img src="~/images/@ad.ProfilePicture"
+                     class="rounded-0"
+                     height="150" width="200"
+                     asp-append-version="true" />
+
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@ad.Id">
+                    <h4>@ad.Title</h4>
+                </a>
+                    Rs @ad.Price <br>
+                    @ad.Location
+</td>
+
+            
+        </tr>
+
+        }
+    </tbody>
+</table>
+
+
+
+
+
+

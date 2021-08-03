@@ -1,0 +1,28 @@
+﻿
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+
+<ul class="list-unstyled components mb-5">
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li>
+            <a href="@Url.Action("Index", "Ads")"><span class="fa fa-address-card"></span>My Ads</a>
+        </li>
+
+
+    }
+    else
+    {
+
+    <li>
+        <a asp-area="Identity" asp-page="/Account/Login"> <span class="fa fa-sign-in"></span>Login</a>
+    </li>
+
+    }
+
+
+</ul>

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Find1.Models.Ad>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+</head>
+<h1>Index</h1>
+
+<h4 class="text-center text-uppercase">My Advertiesmens</h4>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-primary text-uppercase"><i class="fas fa-plus-circle"></i> Add New</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th> </th>
+            <th>@Html.DisplayNameFor(model => model.Title)</th>
+            <th>@Html.DisplayNameFor(model => model.Category)</th>
+            <th>@Html.DisplayNameFor(model => model.Price)</th>
+            <th>@Html.DisplayNameFor(model => model.Datetime)</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ad in Model)
+        {
+        <tr>
+            <td>
+                <img src="~/images/@ad.ProfilePicture"
+                     class="rounded-circle"
+                     height="40" width="40"
+                     asp-append-version="true" />
+
+            </td>
+            <td>@ad.Title</td>
+            <td>@ad.Category.Name</td>
+            <td>@ad.Price]</td>
+            <td>@ad.Datetime</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@ad.Id">Details</a>
+                <a asp-action="Delete" asp-route-id="@ad.Id">
+                    <i class="fa fa-trash" style="font-size: 1.2em;" > Delete</i>
+
+
+                </a>
+            </td>
+        </tr>
+
+        }
+    </tbody>
+</table>
+
+
