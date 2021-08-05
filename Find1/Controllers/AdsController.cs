@@ -45,30 +45,18 @@ namespace Find1.Controllers
 
                 }
 
+              
 
-                /* var ads = new List<Ad>();
 
-                 ads= (List<Ad>)_context.Ads.Include(a => a.Category);
 
-                 var adFilter = new List<Ad>();
-
-                 foreach(var  temp in ads)
-                 {
-
-                     if (temp.Owner == User.Identity.Name)
-                     {
-
-                         adFilter.Add(temp);
-
-                     }*/
 
             }
 
+            var sortad = adFilter.OrderByDescending(o => o.Datetime).ToList();
 
 
 
-
-            return View(adFilter);
+            return View(sortad);
 
 
             }
@@ -123,6 +111,7 @@ namespace Find1.Controllers
                         Owner = User.Identity.Name,
                         Mobile = model.Mobile,
                         Price = model.Price,
+                        Disription=model.Disription,
                         ProfilePicture = uniqueFileName,
                     };
                     _context.Add(ad);

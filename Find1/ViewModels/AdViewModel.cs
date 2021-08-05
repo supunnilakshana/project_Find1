@@ -40,9 +40,18 @@ namespace Find1.Models
         [Required(ErrorMessage = "Price Required!")]
         public float Price { get; set; }
 
+
+        [Required(ErrorMessage = "Please enter Description")]
+        [Display(Name = " Description")]
+        [StringLength(5000)]
+        public string Disription { get; set; }
+
+
+
         [Required(ErrorMessage = "Please choose  image")]
         [Display(Name = "Advertiesment Picture")]
         public IFormFile AdImage { get; set; }
+
 
 
 

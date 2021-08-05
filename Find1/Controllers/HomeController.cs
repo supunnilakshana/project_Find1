@@ -1,6 +1,8 @@
 ﻿using Find1.Data;
 using Find1.Models;
+using Find1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -24,17 +26,71 @@ namespace Find1.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> IndexAsync()
+        public async Task<IActionResult> Index()
         {
+
 
             var applicationDbContext = _context.Ads.Include(a => a.Category);
 
-            
-
-
-
-            return View(await applicationDbContext.ToListAsync());
+              return View(await applicationDbContext.OrderByDescending(o=>o.Datetime).ToListAsync());
         }
+        
+
+
+
+        public IActionResult Adfilter()
+        {
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name");
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Adfilter(FilterViewModel model)
+        {
+           
+            if (ModelState.IsValid)
+           {
+                
+                var ap = new List<Ad>();
+                if (model.Location == "all")
+                  {
+
+                      var applicationDbContext = _context.Ads.Include(a => a.Category).Where(a => (a.CategoryId == model.CategoryId) && (a.Price >= model.MinPrice && a.Price <= model.MaxPrice));                //(b.CategoryId == model.CategoryId) &&
+
+                      ap = applicationDbContext.ToList();
+                      ap.OrderByDescending(a => a.Datetime);
+
+                      return View("Index", ap);
+                  }
+                  else
+                  {
+
+
+                var applicationDbContext = _context.Ads.Include(a => a.Category).Where(a => (a.Location == model.Location) && (a.CategoryId == model.CategoryId)&& ((a.Price >= model.MinPrice) && (a.Price <= model.MaxPrice)));                //(b.CategoryId == model.CategoryId) &&
+
+                    ap = applicationDbContext.ToList();
+                    ap.OrderByDescending(a => a.Datetime);
+
+                    return View("Index", ap);
+
+                }
+            }
+
+           return View();
+
+        }
+
+
+
+
+
+
+
+
+
+
 
 
         public async Task<IActionResult> Details(int? id)

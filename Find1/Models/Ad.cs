@@ -51,6 +51,10 @@ namespace Find1.Models
         [Display(Name = "Created Date")]
         public DateTime Datetime { get; set; }
 
+        [Required(ErrorMessage = "Please enter Description")]
+        [Display(Name = "Title")]
+        [StringLength(5000)]
+        public string Disription { get; set; }
 
 
         public Ad()

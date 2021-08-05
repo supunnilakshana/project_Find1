@@ -8,7 +8,7 @@
 <div class="col-md-10 mx-auto py-4">
     <div class="card">
         <div class="card-header bg-primary text-uppercase text-white">
-            <h4>Create A new Advertiesment </h4>
+            <h4>Create a new Advertiesment </h4>
         </div>
         <div class="card-body">
             <form enctype="multipart/form-data" asp-action="Create">
@@ -53,40 +53,56 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label asp-for="Mobile" class="control-label"></label>
-                            <input asp-for="Mobile" class="form-control" />
-                            <span asp-validation-for="Mobile" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label asp-for="AdImage" class="control-label"></label>
-                            <div class="custom-file">
-                                <input asp-for="AdImage" class="custom-file-input" id="customFile">
-                                <label class="custom-file-label" for="customFile">Choose file</label>
-                            </div>
-                            <span asp-validation-for="AdImage" class="text-danger"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="submit" value=" Post Ad" class="btn btn-outline-success text-uppercase" />
-                            
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <a asp-action="Index" class="btn btn-outline-secondary text-uppercase"><i class="fas fa-fast-backward"></i> Back to List</a>
-                        </div>
-                    </div>
-                </div>
+
                 
-            </form>
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label asp-for="Disription" class="control-label"></label>
+                            <textarea asp-for="Disription" class="form-control" rows="8"></textarea>
+                            <span asp-validation-for="Disription" class="text-danger"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Mobile" class="control-label"></label>
+                                <input asp-for="Mobile" class="form-control" />
+                                <span asp-validation-for="Mobile" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="AdImage" class="control-label"></label>
+                                <div class="custom-file">
+                                    <input asp-for="AdImage" class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                                <span asp-validation-for="AdImage" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="submit" value=" Post Ad" class="btn btn-outline-success text-uppercase" />
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <a asp-action="Index" class="btn btn-outline-secondary text-uppercase"><i class="fa fa-chevron-left"></i> Back to List</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+</form>
         </div>
     </div>
 </div>
